@@ -1,0 +1,833 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel",
+        "description": "Documentation for the BoolBnB API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Laravel Server #1"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/apartment": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "apartment"
+                ]
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "apartment"
+                ]
+            }
+        },
+        "/apartment/create": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "apartment"
+                ]
+            }
+        },
+        "/apartment/{apartment}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartment"
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartment"
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartment"
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartment"
+                ]
+            }
+        },
+        "/apartment/{apartment}/edit": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartment"
+                ]
+            }
+        }
+    },
+    "tags": [],
+    "components": {
+        "schemas": {
+            "Apartment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "title": {
+                        "name": "title",
+                        "type_name": "varchar",
+                        "type": "varchar(128)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "rooms": {
+                        "name": "rooms",
+                        "type_name": "tinyint",
+                        "type": "tinyint(3) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "beds": {
+                        "name": "beds",
+                        "type_name": "tinyint",
+                        "type": "tinyint(3) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "bathrooms": {
+                        "name": "bathrooms",
+                        "type_name": "tinyint",
+                        "type": "tinyint(3) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "apartment_size": {
+                        "name": "apartment_size",
+                        "type_name": "smallint",
+                        "type": "smallint(5) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "address": {
+                        "name": "address",
+                        "type_name": "json",
+                        "type": "json",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "image": {
+                        "name": "image",
+                        "type_name": "varchar",
+                        "type": "varchar(1024)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "is_visible": {
+                        "name": "is_visible",
+                        "type_name": "tinyint",
+                        "type": "tinyint(1)",
+                        "collation": null,
+                        "nullable": false,
+                        "default": "1",
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "user_id": {
+                        "name": "user_id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "rooms",
+                    "beds",
+                    "bathrooms",
+                    "apartment_size",
+                    "address",
+                    "image",
+                    "is_visible",
+                    "user_id"
+                ]
+            },
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "content": {
+                        "name": "content",
+                        "type_name": "text",
+                        "type": "text",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "a long text"
+                    },
+                    "user_email": {
+                        "name": "user_email",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "firstname": {
+                        "name": "firstname",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "lastname": {
+                        "name": "lastname",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "content",
+                    "user_email"
+                ]
+            },
+            "Promotion": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "title": {
+                        "name": "title",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "description": {
+                        "name": "description",
+                        "type_name": "text",
+                        "type": "text",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "a long text"
+                    },
+                    "price": {
+                        "name": "price",
+                        "type_name": "decimal",
+                        "type": "decimal(8,2) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "duration_time": {
+                        "name": "duration_time",
+                        "type_name": "tinyint",
+                        "type": "tinyint(3) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "price",
+                    "duration_time"
+                ]
+            },
+            "Service": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "title": {
+                        "name": "title",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title"
+                ]
+            },
+            "Statistic": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "visualizations": {
+                        "name": "visualizations",
+                        "type_name": "int",
+                        "type": "int(10) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "message_count": {
+                        "name": "message_count",
+                        "type_name": "smallint",
+                        "type": "smallint(5) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "visualizations",
+                    "message_count"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "firstname": {
+                        "name": "firstname",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "lastname": {
+                        "name": "lastname",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "dob": {
+                        "name": "dob",
+                        "type_name": "date",
+                        "type": "date",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20"
+                    },
+                    "email": {
+                        "name": "email",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "email_verified_at": {
+                        "name": "email_verified_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "password": {
+                        "name": "password",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "piva": {
+                        "name": "piva",
+                        "type_name": "varchar",
+                        "type": "varchar(11)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "remember_token": {
+                        "name": "remember_token",
+                        "type_name": "varchar",
+                        "type": "varchar(100)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-20 13:47:45"
+                    }
+                },
+                "required": [
+                    "id",
+                    "email",
+                    "password",
+                    "piva"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
