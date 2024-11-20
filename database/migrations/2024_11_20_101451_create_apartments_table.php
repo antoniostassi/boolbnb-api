@@ -20,6 +20,7 @@ return new class extends Migration
             $table->smallInteger('apartment_size')->unsigned();
             $table->json('address');
             $table->string('image', 1024);
+            $table->boolean('is_visible')->default(true);
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete(null);
             $table->timestamps();
         });
