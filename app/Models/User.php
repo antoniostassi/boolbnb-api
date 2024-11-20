@@ -45,4 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    // apartments relation
+    protected function apartments(){
+        return $this->hasMany(Apartment::class); // relation many apartments to one user
+    }
 }
