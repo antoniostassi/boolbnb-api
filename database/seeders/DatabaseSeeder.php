@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             MessageSeeder::class,
+            ServiceSeeder::class,
         ]);
 
     }
