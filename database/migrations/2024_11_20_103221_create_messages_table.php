@@ -16,8 +16,8 @@ return new class extends Migration
             // apartment_id | foreignKey to add
             $table->text('content');
             $table->string('user_email', 64);
-            $table->string('firstname')->nullable();
-            $table->string('lastname')->nullable();
+            $table->string('firstname', 64)->nullable();
+            $table->string('lastname', 64)->nullable();
             $table->timestamps();
         });
     }
