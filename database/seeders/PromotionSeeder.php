@@ -20,14 +20,7 @@ class PromotionSeeder extends Seeder
     // ● 9.99 € per 144 ore di sponsorizzazione
     public function run(): void
     {
-        $promotions = [
-            [
-                'title' => 'Gold',
-                'description' => 'Questa sponsorizzazione offre 6 giorni di alta visibilità per il tuo annuncio',
-                'price' => 9.99,
-                'duration_time' => 0000-00-06, // non funziona, da sistemare
-            ],
-        ];
+        $promotions = config('promotions');
         Schema::disableForeignKeyConstraints();
         Promotion::truncate();
         Schema::enableForeignKeyConstraints();
