@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('apartment_service', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary([ // Questo serve ad evitare che si crei una coppia identica di chiavi.
+                'apartment_id',
+                'service_id'
+            ]);
         });
     }
 

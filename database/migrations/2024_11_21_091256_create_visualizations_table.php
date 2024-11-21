@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('ip_address', 24);
-            $table->timestamps(); // Table "visit_date" is linked to timestamps
+            $table->date('visit_date'); // Table "visit_date" is linked to timestamps
         });
     }
 
