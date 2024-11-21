@@ -13,7 +13,8 @@ class Promotion extends Model
         'duration_time'
     ];
 
-    public function apartments(){
-        return $this->hasMany(Apartment::class); // relation many to many with apartments
+    public function apartments()
+    {
+        return $this->belongsToMany(Apartment::class); // relation many to many with apartments
     }
 }

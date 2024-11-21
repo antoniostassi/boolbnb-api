@@ -18,24 +18,36 @@ class Apartment extends Model
         'user_id'
     ];
 
-    public function user() : belongsTo
+    protected $with = [ // To include on Apartment::get(), table related ( called with function names ).
+        'user',
+        'visualizations',
+        'services',
+        'messages',
+        'promotions'
+    ];
+
+    public function user()
     {
         return $this->belongsTo(User::class); // Relation many apartments has one user.
     }
 
-    public function visualizations() : hasMany {
+    public function visualizations()
+    {
         return $this->hasMany(Visualization::class); // Relation one apartmnent has many visualizations.
     }
 
-    public function services() : belongsToMany {
+    public function services()
+    {
         return $this->belongsToMany(Service::class); // Many to Many relation
     }
 
-    public function messages(){
+    public function messages()
+    {
         return $this->hasMany(Message::class); // Relation many messages to one apartment
     }
 
-    public function promotions(){
-        return $this->hasMany(Promotion::class); //relation many to many with promotions
+    public function promotions()
+    {
+        return $this->belongsToMany(Promotion::class); //relation many to many with promotions
     }
 }

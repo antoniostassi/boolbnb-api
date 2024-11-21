@@ -22,11 +22,16 @@ class ApartmentPromotionSeeder extends Seeder
 
         Schema::disableForeignKeyConstraints();
         DB::table('apartment_promotion')->truncate();
+
         for ($i=0; $i < 10; $i++) {
+
             $randomApartment = Apartment::inRandomOrder()->first();
             $randomPromotion = Promotion::inRandomOrder()->first();
+
             if(!in_array([$randomApartment->id, $randomPromotion->id], $apartmentsPromotions)) {
+
                 $now = new \DateTime(date('Y-m-d')); // lo slash prima del dateTime usa il namespace globale
+
                 DB::table('apartment_promotion')->insert([
                     'apartment_id' => $randomApartment->id,
                     'promotion_id' => $randomPromotion->id,
