@@ -26,8 +26,8 @@ class ApartmentServiceSeeder extends Seeder
 
             if(!in_array([$serviceId, $apartmentId], $couples)) { // Filtra e controlla se la coppie non è già stata inserita.
                 DB::table('apartment_service')->insert([
-                    'apartment_id' => rand(1,50),
-                    'service_id' => rand(1,20),
+                    'apartment_id' => $apartmentId,
+                    'service_id' => $serviceId,
                 ]);
 
                 $couples[] = [$serviceId, $apartmentId]; // Salva le coppie create 
