@@ -17,8 +17,6 @@ class ApartmentSeeder extends Seeder
         // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         DB::table('apartments')->truncate();
-        
-        Schema::enableForeignKeyConstraints();
 
         $apartments = config('apartments');
         foreach ($apartments as $index => $apartment) {

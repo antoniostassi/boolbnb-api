@@ -26,8 +26,6 @@ class PromotionSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Promotion::truncate();
         
-        Schema::enableForeignKeyConstraints();
-
         foreach ($promotions as $promotion) {
             DB::table('promotions')->insert([
                 'title' => $promotion['title'],

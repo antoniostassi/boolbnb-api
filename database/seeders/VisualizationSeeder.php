@@ -17,8 +17,6 @@ class VisualizationSeeder extends Seeder
         // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         DB::table('visualizations')->truncate();
-
-        Schema::enableForeignKeyConstraints();
         
         date_default_timezone_set('Europe/Rome');
         

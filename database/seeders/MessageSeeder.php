@@ -22,9 +22,7 @@ class MessageSeeder extends Seeder
         // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         Message::truncate();
-        
-        Schema::enableForeignKeyConstraints();
-        
+                
         for ($i=0; $i < 60; $i++) {
             $randomApartment = Apartment::inRandomOrder()->first();
             DB::table('messages')->insert([
