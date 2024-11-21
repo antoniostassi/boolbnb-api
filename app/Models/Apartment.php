@@ -26,4 +26,8 @@ class Apartment extends Model
     public function visualizations() : hasMany {
         return $this->hasMany(Visualization::class); // Relation one apartmnent has many visualizations.
     }
+
+    public function services() : belongsToMany {
+        return $this->belongsToMany(Service::class); // Many to Many relation
+    }
 }
