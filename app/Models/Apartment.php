@@ -30,4 +30,12 @@ class Apartment extends Model
     public function services() : belongsToMany {
         return $this->belongsToMany(Service::class); // Many to Many relation
     }
+
+    public function messages(){
+        return $this->hasMany(Message::class); // Relation many messages to one apartment
+    }
+
+    public function promotions(){
+        return $this->hasMany(Promotion::class); //relation many to many with promotions
+    }
 }

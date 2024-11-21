@@ -12,4 +12,8 @@ class Promotion extends Model
         'price',
         'duration_time'
     ];
+
+    public function apartments(){
+        return $this->hasMany(Apartment::class); // relation many to many with apartments
+    }
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('apartment_promotion', function (Blueprint $table) {
             $table->id();
-            // apartment_id foreignKey to add
-            // promotion_id foreignKey to add
+
+            $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('promotion_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
@@ -26,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('apartment_promotion');
+        Schema::withoutForeignKeyConstraints(function () {
+            Schema::dropIfExists('apartment_promotion');
+        });
     }
 };

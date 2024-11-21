@@ -14,4 +14,8 @@ class Message extends Model
         'lastname',
         'apartment_id'
     ];
+
+    public function apartment(){
+        return $this->belongsTo(Apartment::class); // Relation one apartment to many messages
+    }
 }

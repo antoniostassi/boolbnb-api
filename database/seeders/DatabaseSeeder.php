@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         ]); */
 
         $this->call([
-            MessageSeeder::class,
             PromotionSeeder::class,
             ApartmentSeeder::class,
+            MessageSeeder::class,
             VisualizationSeeder::class,
             ServiceSeeder::class,
             ApartmentServiceSeeder::class
