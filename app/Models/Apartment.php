@@ -21,4 +21,8 @@ class Apartment extends Model
     public function user(){
         return $this->belongsTo(User::class); // Relation one user to many apartments
     }
+
+    public function messages(){
+        return $this->hasMany(Message::class); // Relation many messages to one apartment
+    }
 }
