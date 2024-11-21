@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            // apartment_id | foreignKey to add
             $table->text('content');
             $table->string('user_email', 64);
             $table->string('firstname', 64)->nullable();
             $table->string('lastname', 64)->nullable();
+            $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::withoutForeignKeyConstraints(function () {
+            Schema::dropIfExists('messages');
+        });
     }
 };
