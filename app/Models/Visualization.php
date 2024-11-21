@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Visualization extends Model
 {
     //
-    const CREATED_AT = 'visit_date';
 
     protected $fillable = [
         'apartment_id',
