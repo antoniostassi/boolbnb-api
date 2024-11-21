@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->text('description');
             $table->decimal('price')->unsigned();
-            $table->tinyInteger('duration_time')->unsigned();
+            $table->time('duration_time')->unsigned();
             $table->timestamps();
         });
     }
