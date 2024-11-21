@@ -1,14 +1,14 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel",
+        "title": "BoolBnB",
         "description": "Documentation for the BoolBnB API",
         "version": "1.0.0"
     },
     "servers": [
         {
             "url": "http://localhost:8000/api",
-            "description": "Laravel Server #1"
+            "description": "BoolBnB Server #1"
         }
     ],
     "paths": {
@@ -37,41 +37,7 @@
         },
         "/apartment": {
             "get": {
-                "summary": "Display a listing of the resource.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "tags": [
-                    "apartment"
-                ]
-            },
-            "post": {
-                "summary": "Store a newly created resource in storage.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "tags": [
-                    "apartment"
-                ]
-            }
-        },
-        "/apartment/create": {
-            "get": {
-                "summary": "",
+                "summary": "Mostra la lista di tutti gli appartamenti.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -89,117 +55,7 @@
         },
         "/apartment/{apartment}": {
             "get": {
-                "summary": "Display the specified resource.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "apartment",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "apartment"
-                ]
-            },
-            "put": {
-                "summary": "Update the specified resource in storage.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "apartment",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "apartment"
-                ]
-            },
-            "patch": {
-                "summary": "Update the specified resource in storage.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "apartment",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "apartment"
-                ]
-            },
-            "delete": {
-                "summary": "Remove the specified resource from storage.",
-                "description": "",
-                "deprecated": false,
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "(Unauthorized) Invalid or missing Access Token"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "apartment",
-                        "in": "path",
-                        "required": true,
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "apartment"
-                ]
-            }
-        },
-        "/apartment/{apartment}/edit": {
-            "get": {
-                "summary": "",
+                "summary": "Ottieni le informazioni di un singolo appartamento tramite il suo ID.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -241,6 +97,17 @@
                         "nullable": false,
                         "default": null,
                         "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "user_id": {
+                        "name": "user_id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
                         "comment": null,
                         "generation": null
                     },
@@ -301,8 +168,30 @@
                     },
                     "address": {
                         "name": "address",
-                        "type_name": "json",
-                        "type": "json",
+                        "type_name": "varchar",
+                        "type": "varchar(128)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "latitude": {
+                        "name": "latitude",
+                        "type_name": "decimal",
+                        "type": "decimal(11,8)",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "longitude": {
+                        "name": "longitude",
+                        "type_name": "decimal",
+                        "type": "decimal(11,8)",
                         "collation": null,
                         "nullable": false,
                         "default": null,
@@ -332,17 +221,6 @@
                         "comment": null,
                         "generation": null
                     },
-                    "user_id": {
-                        "name": "user_id",
-                        "type_name": "bigint",
-                        "type": "bigint(20) unsigned",
-                        "collation": null,
-                        "nullable": false,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null
-                    },
                     "created_at": {
                         "name": "created_at",
                         "type_name": "timestamp",
@@ -353,7 +231,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -365,20 +243,22 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     }
                 },
                 "required": [
                     "id",
+                    "user_id",
                     "title",
                     "rooms",
                     "beds",
                     "bathrooms",
                     "apartment_size",
                     "address",
+                    "latitude",
+                    "longitude",
                     "image",
-                    "is_visible",
-                    "user_id"
+                    "is_visible"
                 ]
             },
             "Message": {
@@ -450,7 +330,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -462,7 +342,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     }
                 },
                 "required": [
@@ -540,7 +420,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -552,7 +432,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     }
                 },
                 "required": [
@@ -588,66 +468,11 @@
                         "comment": null,
                         "generation": null
                     },
-                    "created_at": {
-                        "name": "created_at",
-                        "type_name": "timestamp",
-                        "type": "timestamp",
-                        "collation": null,
-                        "nullable": true,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null,
-                        "example": "2024-11-20 13:47:45"
-                    },
-                    "updated_at": {
-                        "name": "updated_at",
-                        "type_name": "timestamp",
-                        "type": "timestamp",
-                        "collation": null,
-                        "nullable": true,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null,
-                        "example": "2024-11-20 13:47:45"
-                    }
-                },
-                "required": [
-                    "id",
-                    "title"
-                ]
-            },
-            "Statistic": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "name": "id",
-                        "type_name": "bigint",
-                        "type": "bigint(20) unsigned",
-                        "collation": null,
-                        "nullable": false,
-                        "default": null,
-                        "auto_increment": true,
-                        "comment": null,
-                        "generation": null
-                    },
-                    "visualizations": {
-                        "name": "visualizations",
-                        "type_name": "int",
-                        "type": "int(10) unsigned",
-                        "collation": null,
-                        "nullable": false,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null
-                    },
-                    "message_count": {
-                        "name": "message_count",
-                        "type_name": "smallint",
-                        "type": "smallint(5) unsigned",
-                        "collation": null,
+                    "image": {
+                        "name": "image",
+                        "type_name": "varchar",
+                        "type": "varchar(1024)",
+                        "collation": "utf8mb4_unicode_ci",
                         "nullable": false,
                         "default": null,
                         "auto_increment": false,
@@ -664,7 +489,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -676,13 +501,13 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     }
                 },
                 "required": [
                     "id",
-                    "visualizations",
-                    "message_count"
+                    "title",
+                    "image"
                 ]
             },
             "User": {
@@ -696,6 +521,17 @@
                         "nullable": false,
                         "default": null,
                         "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "name": {
+                        "name": "name",
+                        "type_name": "varchar",
+                        "type": "varchar(64)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
                         "comment": null,
                         "generation": null
                     },
@@ -731,7 +567,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20"
+                        "example": "2024-11-21"
                     },
                     "email": {
                         "name": "email",
@@ -754,23 +590,12 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "password": {
                         "name": "password",
                         "type_name": "varchar",
                         "type": "varchar(255)",
-                        "collation": "utf8mb4_unicode_ci",
-                        "nullable": false,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null
-                    },
-                    "piva": {
-                        "name": "piva",
-                        "type_name": "varchar",
-                        "type": "varchar(11)",
                         "collation": "utf8mb4_unicode_ci",
                         "nullable": false,
                         "default": null,
@@ -799,7 +624,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -811,14 +636,80 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-20 13:47:45"
+                        "example": "2024-11-21 10:22:00"
                     }
                 },
                 "required": [
                     "id",
                     "email",
-                    "password",
-                    "piva"
+                    "password"
+                ]
+            },
+            "Visualization": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "apartment_id": {
+                        "name": "apartment_id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "ip_address": {
+                        "name": "ip_address",
+                        "type_name": "varchar",
+                        "type": "varchar(24)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-21 10:22:00"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-11-21 10:22:00"
+                    }
+                },
+                "required": [
+                    "id",
+                    "apartment_id",
+                    "ip_address"
                 ]
             }
         },

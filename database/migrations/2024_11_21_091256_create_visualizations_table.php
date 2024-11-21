@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('visualizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignKey('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('ip_address', 24);
             $table->timestamps(); // Table "visit_date" is linked to timestamps
         });

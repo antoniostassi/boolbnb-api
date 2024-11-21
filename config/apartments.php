@@ -1,5 +1,5 @@
 <?php
-$apartments = [
+return [
     [
         "id" => 1,
         "title" => "Monolocale accogliente nel centro storico",
