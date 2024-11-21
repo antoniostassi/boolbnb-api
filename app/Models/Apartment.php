@@ -18,7 +18,12 @@ class Apartment extends Model
         'user_id'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class); // Relation one user to many apartments
+    public function user() : belongsTo
+    {
+        return $this->belongsTo(User::class); // Relation many apartments has one user.
+    }
+
+    public function visualizations() : hasMany {
+        return $this->hasMany(Visualization::class); // Relation one apartmnent has many visualizations.
     }
 }
