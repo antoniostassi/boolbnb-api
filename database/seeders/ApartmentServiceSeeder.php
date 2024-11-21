@@ -14,9 +14,11 @@ class ApartmentServiceSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         DB::table('apartment_service')->truncate();
+
+        Schema::enableForeignKeyConstraints();
 
         $couples = [];
 

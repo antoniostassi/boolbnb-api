@@ -14,10 +14,12 @@ class ApartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         DB::table('apartments')->truncate();
         
+        Schema::enableForeignKeyConstraints();
+
         $apartments = config('apartments');
         foreach ($apartments as $index => $apartment) {
             DB::table('apartments')->insert([

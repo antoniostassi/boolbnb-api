@@ -21,15 +21,19 @@ class PromotionSeeder extends Seeder
     public function run(): void
     {
         $promotions = config('promotions');
+        
+        // To be able to truncate()
         Schema::disableForeignKeyConstraints();
         Promotion::truncate();
+        
         Schema::enableForeignKeyConstraints();
-        foreach ($promotions as $singlePromotion) {
+
+        foreach ($promotions as $promotion) {
             DB::table('promotions')->insert([
-                'title' => $singlePromotion['title'],
-                'description' => $singlePromotion['description'],
-                'price' => $singlePromotion['price'],
-                'duration_time' => $singlePromotion['duration_time'],
+                'title' => $promotion['title'],
+                'description' => $promotion['description'],
+                'price' => $promotion['price'],
+                'duration_time' => $promotion['duration_time'],
             ]);
         }
 
