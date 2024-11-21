@@ -25,14 +25,21 @@ class PromotionSeeder extends Seeder
                 'title' => 'Gold',
                 'description' => 'Questa sponsorizzazione offre 6 giorni di alta visibilità per il tuo annuncio',
                 'price' => 9.99,
-                'duration_time' => 0000-00-06,
+                'duration_time' => 0000-00-06, // non funziona, da sistemare
             ],
         ];
+        Schema::disableForeignKeyConstraints();
         Promotion::truncate();
+        Schema::enableForeignKeyConstraints();
+        foreach ($promotions as $singlePromotion) {
+            DB::table('promotions')->insert([
+                'title' => $singlePromotion['title'],
+                'description' => $singlePromotion['description'],
+                'price' => $singlePromotion['price'],
+                'duration_time' => $singlePromotion['duration_time'],
+            ]);
+        }
 
-        DB::table('promotions')->insert([
-
-        ]);
 
     }
 }
