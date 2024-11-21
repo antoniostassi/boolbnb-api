@@ -11,4 +11,8 @@ class Service extends Model
         'title',
         'image'
     ];
+
+    public function apartments() : belongsToMany {
+        return $this->belongsToMany(Apartment::class); // Many to Many relation
+    }
 }
