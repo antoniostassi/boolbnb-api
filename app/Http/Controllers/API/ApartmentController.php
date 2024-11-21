@@ -11,11 +11,13 @@ use Illuminate\Http\Request;
 class ApartmentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista di tutti gli appartamenti.
      */
     public function index()
     {
         //
+        $data = Apartment::get();
+        return $data;
     }
 
     /**
@@ -27,11 +29,13 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Ottieni le informazioni di un singolo appartamento tramite il suo ID.
      */
-    public function show(Apartment $apartment)
+    public function show(string $id)
     {
         //
+        $data = Apartment::where('id', $id)->get();
+        return $data;
     }
 
 
