@@ -37,8 +37,8 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
-            'title' => 'required|numeric|max:128|min:5',
-            'rooms' => 'required|string|max:20|min:1',
+            'title' => 'required|string|max:128|min:5',
+            'rooms' => 'required|numeric|max:20|min:1',
             'beds' => 'required|numeric|max:20|min:1',
             'bathrooms' => 'required|numeric|max:10|min:1',
             'apartment_size' => 'required|numeric|min:7',
@@ -61,15 +61,14 @@ class ApartmentController extends Controller
             return response()->json([
                 'errors' => $errors,
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
-            ]);
+            ], 400);
         };
 
-        $validator = Apartment::create($validator);
+        $apartment = Apartment::create($request->all());
 
-        $validator->services()->sync($validator['services'] ?? []); // Many to Many pivot table sync
-        $validator->promotions()->sync($validator['promotions'] ?? []); // Many to Many pivot table sync
+        $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
+        $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
 
-        $validated = $request->all();
         return response()->json([
             'status' => 'ok'
         ], 200);
@@ -117,11 +116,8 @@ class ApartmentController extends Controller
             ]);
         };
 
-        $apartment->update($validator);
-        $validator->services()->sync($validator['services'] ?? []); // Many to Many pivot table sync
-        $validator->promotions()->sync($validator['promotions'] ?? []); // Many to Many pivot table sync
+        // Inserire roba
 
-        $validated = $request->all();
         return response()->json([
             'status' => 'ok'
         ], 200);
