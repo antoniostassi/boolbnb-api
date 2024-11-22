@@ -17,6 +17,7 @@ class ApartmentController extends Controller
      * Mostra la lista di tutti gli appartamenti.
      */
     public function index(Request $request)
+    
         {
             if ($request->has('all') && $request->all == true) {
                 $apartments = Apartment::all(); // Se la richiesta ha parametro all=true restituisce tutti gli appartamenti
@@ -26,7 +27,6 @@ class ApartmentController extends Controller
 
             return response()->json(['data' => $apartments]);
         }
-
 
     /**
      * Store a newly created resource in storage.
