@@ -19,11 +19,11 @@ class ApartmentController extends Controller
     public function index(Request $request)
     {
         //
-        if ($request->all()) {
-        
-            return dd($request->all());
-        };
-        
+        // if ($request->all()) {
+
+        //     return dd($request->all());
+        // };
+
         $data = Apartment::paginate(10); // paginate = 10 items for single page.
         return $data;
     }
@@ -57,7 +57,7 @@ class ApartmentController extends Controller
         if ($validator->fails()) {
 
             $errors = $validator->errors();
-            
+
             return response()->json([
                 'errors' => $errors,
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
@@ -109,7 +109,7 @@ class ApartmentController extends Controller
         if ($validator->fails()) {
 
             $errors = $validator->errors();
-            
+
             return response()->json([
                 'errors' => $errors,
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
