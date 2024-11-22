@@ -21,10 +21,10 @@ class ApartmentController extends Controller
         if ($request->has('all') && $request->all == true) {
             $data = Apartment::all(); // Se la richiesta ha parametro all=true restituisce tutti gli appartamenti
         } else {
-            $data = Apartment::paginate(10); // Altrimenti ne mostra 10 come al solito
+            $data = Apartment::paginate(8); // Altrimenti ne mostra 8 come al solito
         }
 
-        //$data = Apartment::paginate(10); // paginate = 10 items for single page.
+        //$data = Apartment::paginate(8); // paginate = 8 items for single page.
         return $data;
     }
 
