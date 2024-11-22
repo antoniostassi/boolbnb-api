@@ -11,5 +11,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::resource('apartment', ApartmentController::class)->only([ 
     'index',
-    'show'
+    'show',
+    'store'
 ]);
