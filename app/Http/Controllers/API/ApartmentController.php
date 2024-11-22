@@ -16,9 +16,14 @@ class ApartmentController extends Controller
     /**
      * Mostra la lista di tutti gli appartamenti.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if ($request->all()) {
+        
+            return dd($request->all());
+        };
+        
         $data = Apartment::paginate(10); // paginate = 10 items for single page.
         return $data;
     }
@@ -32,7 +37,7 @@ class ApartmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
-            'title' => 'required|string|max:128|min:5|',
+            'title' => 'required|numeric|max:128|min:5',
             'rooms' => 'required|string|max:20|min:1',
             'beds' => 'required|numeric|max:20|min:1',
             'bathrooms' => 'required|numeric|max:10|min:1',
@@ -88,8 +93,8 @@ class ApartmentController extends Controller
         //
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
-            'title' => 'required|string|max:128|min:5|',
-            'rooms' => 'required|string|max:20|min:1',
+            'title' => 'required|string|max:128|min:5',
+            'rooms' => 'required|numeric|max:20|min:1',
             'beds' => 'required|numeric|max:20|min:1',
             'bathrooms' => 'required|numeric|max:10|min:1',
             'apartment_size' => 'required|numeric|min:7',

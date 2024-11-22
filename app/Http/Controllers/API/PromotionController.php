@@ -14,7 +14,8 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $data = Promotion::all(); // 
+        return $data;
     }
 
 
