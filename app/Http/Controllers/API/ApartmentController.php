@@ -19,12 +19,13 @@ class ApartmentController extends Controller
     public function index(Request $request)
     {
         if ($request->has('all') && $request->all == true) {
-            $apartments = Apartment::all(); // Se la richiesta ha parametro all=true restituisce tutti gli appartamenti
+            $data = Apartment::all(); // Se la richiesta ha parametro all=true restituisce tutti gli appartamenti
         } else {
-            $apartments = Apartment::paginate(10); // Altrimenti ne mostra 10 come al solito
+            $data = Apartment::paginate(10); // Altrimenti ne mostra 10 come al solito
         }
 
-        return response()->json(['data' => $apartments]);
+        //$data = Apartment::paginate(10); // paginate = 10 items for single page.
+        return $data;
     }
 
     /**
