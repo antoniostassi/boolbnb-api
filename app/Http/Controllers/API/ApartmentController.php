@@ -41,7 +41,9 @@ class ApartmentController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'image' => 'required|string|max:1024',
-            'is_visible' => 'nullable|boolean'
+            'is_visible' => 'nullable|boolean',
+            'services' => 'nullable|array|exists:services,id',
+            'promotions' => 'nullable|exists:promotions,id',
         ],
         [
             'user_id.exists' => 'Deve esistere'
@@ -56,6 +58,11 @@ class ApartmentController extends Controller
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
             ]);
         };
+
+        $validator = Apartment::create($validator);
+
+        $validator->services()->sync($validator['services'] ?? []); // Many to Many pivot table sync
+        $validator->promotions()->sync($validator['promotions'] ?? []); // Many to Many pivot table sync
 
         $validated = $request->all();
         return response()->json([
@@ -79,6 +86,40 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|exists:users,id',
+            'title' => 'required|string|max:128|min:5|',
+            'rooms' => 'required|string|max:20|min:1',
+            'beds' => 'required|numeric|max:20|min:1',
+            'bathrooms' => 'required|numeric|max:10|min:1',
+            'apartment_size' => 'required|numeric|min:7',
+            'address' => 'required|string|min:10|max:128',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'image' => 'required|string|max:1024',
+            'is_visible' => 'nullable|boolean',
+            'services' => 'nullable|array|exists:services,id',
+            'promotions' => 'nullable|exists:promotions,id',
+        ]);
+
+        if ($validator->fails()) {
+
+            $errors = $validator->errors();
+            
+            return response()->json([
+                'errors' => $errors,
+                'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
+            ]);
+        };
+
+        $apartment->update($validator);
+        $validator->services()->sync($validator['services'] ?? []); // Many to Many pivot table sync
+        $validator->promotions()->sync($validator['promotions'] ?? []); // Many to Many pivot table sync
+
+        $validated = $request->all();
+        return response()->json([
+            'status' => 'ok'
+        ], 200);
     }
 
     /**
