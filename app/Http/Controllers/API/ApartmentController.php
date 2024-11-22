@@ -24,7 +24,7 @@ class ApartmentController extends Controller
             $apartments = Apartment::paginate(10); // Altrimenti ne mostra 10 come al solito
         }
 
-        return $apartments;
+        return response()->json(['data' => $apartments]);
     }
 
     /**
