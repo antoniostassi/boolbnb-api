@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista di tutti i servizi disponibili.
      */
     public function index()
     {
-        //
+        $data = Service::all(); // 
+        return $data;
     }
 
     /**

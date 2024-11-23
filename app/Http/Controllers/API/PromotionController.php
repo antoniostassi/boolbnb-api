@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 class PromotionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista di tutte le promotions disponibili.
      */
     public function index()
     {
-        //
+        $data = Promotion::all(); // 
+        return $data;
     }
 
 

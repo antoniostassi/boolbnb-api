@@ -35,7 +35,43 @@
                 ]
             }
         },
-        "/apartment": {
+        "/services": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "services"
+                ]
+            }
+        },
+        "/promotions": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "promotions"
+                ]
+            }
+        },
+        "/apartments": {
             "get": {
                 "summary": "Mostra la lista di tutti gli appartamenti.",
                 "description": "",
@@ -49,11 +85,27 @@
                     }
                 },
                 "tags": [
-                    "apartment"
+                    "apartments"
+                ]
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "apartments"
                 ]
             }
         },
-        "/apartment/{apartment}": {
+        "/apartments/{apartment}": {
             "get": {
                 "summary": "Ottieni le informazioni di un singolo appartamento tramite il suo ID.",
                 "description": "",
@@ -78,7 +130,61 @@
                     }
                 ],
                 "tags": [
-                    "apartment"
+                    "apartments"
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartments"
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartments"
                 ]
             }
         }
@@ -179,25 +285,27 @@
                     },
                     "latitude": {
                         "name": "latitude",
-                        "type_name": "decimal",
-                        "type": "decimal(11,8)",
+                        "type_name": "float",
+                        "type": "float",
                         "collation": null,
                         "nullable": false,
                         "default": null,
                         "auto_increment": false,
                         "comment": null,
-                        "generation": null
+                        "generation": null,
+                        "example": 0.5
                     },
                     "longitude": {
                         "name": "longitude",
-                        "type_name": "decimal",
-                        "type": "decimal(11,8)",
+                        "type_name": "float",
+                        "type": "float",
                         "collation": null,
                         "nullable": false,
                         "default": null,
                         "auto_increment": false,
                         "comment": null,
-                        "generation": null
+                        "generation": null,
+                        "example": 0.5
                     },
                     "image": {
                         "name": "image",
@@ -231,7 +339,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -243,7 +351,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     }
                 },
                 "required": [
@@ -320,6 +428,17 @@
                         "comment": null,
                         "generation": null
                     },
+                    "apartment_id": {
+                        "name": "apartment_id",
+                        "type_name": "bigint",
+                        "type": "bigint(20) unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
                     "created_at": {
                         "name": "created_at",
                         "type_name": "timestamp",
@@ -330,7 +449,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -342,13 +461,14 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     }
                 },
                 "required": [
                     "id",
                     "content",
-                    "user_email"
+                    "user_email",
+                    "apartment_id"
                 ]
             },
             "Promotion": {
@@ -391,7 +511,7 @@
                     "price": {
                         "name": "price",
                         "type_name": "decimal",
-                        "type": "decimal(8,2) unsigned",
+                        "type": "decimal(8,2)",
                         "collation": null,
                         "nullable": false,
                         "default": null,
@@ -402,7 +522,7 @@
                     "duration_time": {
                         "name": "duration_time",
                         "type_name": "tinyint",
-                        "type": "tinyint(3) unsigned",
+                        "type": "tinyint(4)",
                         "collation": null,
                         "nullable": false,
                         "default": null,
@@ -420,7 +540,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -432,7 +552,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     }
                 },
                 "required": [
@@ -489,7 +609,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -501,7 +621,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     }
                 },
                 "required": [
@@ -567,7 +687,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21"
+                        "example": "2024-11-23"
                     },
                     "email": {
                         "name": "email",
@@ -590,7 +710,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "password": {
                         "name": "password",
@@ -624,7 +744,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -636,7 +756,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23 09:31:47"
                     }
                 },
                 "required": [
@@ -681,35 +801,24 @@
                         "comment": null,
                         "generation": null
                     },
-                    "created_at": {
-                        "name": "created_at",
-                        "type_name": "timestamp",
-                        "type": "timestamp",
+                    "visit_date": {
+                        "name": "visit_date",
+                        "type_name": "date",
+                        "type": "date",
                         "collation": null,
-                        "nullable": true,
+                        "nullable": false,
                         "default": null,
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-21 10:22:00"
-                    },
-                    "updated_at": {
-                        "name": "updated_at",
-                        "type_name": "timestamp",
-                        "type": "timestamp",
-                        "collation": null,
-                        "nullable": true,
-                        "default": null,
-                        "auto_increment": false,
-                        "comment": null,
-                        "generation": null,
-                        "example": "2024-11-21 10:22:00"
+                        "example": "2024-11-23"
                     }
                 },
                 "required": [
                     "id",
                     "apartment_id",
-                    "ip_address"
+                    "ip_address",
+                    "visit_date"
                 ]
             }
         },
