@@ -23,5 +23,6 @@ Route::resource('apartments', ApartmentController::class)->only([
     'index',
     'show',
     'store',
-    'update'
+    'update',
+    'destroy'
 ]);

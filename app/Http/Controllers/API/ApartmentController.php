@@ -142,10 +142,17 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Rimuovi un singolo appartamento passandone l'ID.
      */
     public function destroy(Apartment $apartment)
     {
         //
+        $apartment->delete();
+
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'Appartamento eliminato con successo.',
+        ]);
+
     }
 }
