@@ -130,7 +130,7 @@ class ApartmentController extends Controller
             ]);
         };
 
-        $apartment = Apartment::updateOrCreate($request->all);
+        $apartment->update($validator->validated());
 
         $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
         $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
