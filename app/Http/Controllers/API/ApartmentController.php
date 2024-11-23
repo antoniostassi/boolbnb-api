@@ -15,12 +15,24 @@ class ApartmentController extends Controller
 {
     /**
      * Mostra la lista di tutti gli appartamenti.
-     */
+     * @Request({
+     *     summary: Ottieni tutti gli appartamenti corrispondenti ad un user_id,
+     *     description: Passa come parametri in GET lo user_id dell'utente di cui vuoi cercare gli appartamenti,
+     *     tags: apartments/{user_id}
+     * }) 
+    */
     public function index(Request $request)
     {
-        if ($request->has('all') && $request->all == true) {
+        if ($request->has('all') && $request->all == true) 
+        {
             $data = Apartment::all(); // Se la richiesta ha parametro all=true restituisce tutti gli appartamenti
-        } else {
+        } 
+        elseif ($request->has('user_id')) 
+        {
+            $data = Apartment::where('user_id', $request->user_id)->get(); // Estrai gli appartamenti dell'utente
+        }
+        else 
+        {
             $data = Apartment::paginate(10); // Altrimenti ne mostra 10 come al solito
         }
 
@@ -28,8 +40,10 @@ class ApartmentController extends Controller
         return $data;
     }
 
+    
+
     /**
-     * Store a newly created resource in storage.
+     * Salva un nuovo appartamento all'interno del database.
      */
     public function store(Request $request)
     {
@@ -85,7 +99,7 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Salva le modifiche apportate ad un appartamento.
      */
     public function update(Request $request, Apartment $apartment)
     {
