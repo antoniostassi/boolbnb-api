@@ -116,7 +116,11 @@ class ApartmentController extends Controller
             ]);
         };
 
-        // Inserire roba
+        $apartment = Apartment::updateOrCreate($request->all);
+
+        $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
+        $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
+
 
         return response()->json([
             'status' => 'ok'
