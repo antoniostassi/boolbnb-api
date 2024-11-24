@@ -37,7 +37,7 @@
         },
         "/services": {
             "get": {
-                "summary": "Display a listing of the resource.",
+                "summary": "Mostra la lista di tutti i servizi disponibili.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -55,7 +55,7 @@
         },
         "/promotions": {
             "get": {
-                "summary": "Display a listing of the resource.",
+                "summary": "Mostra la lista di tutte le promotions disponibili.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -73,8 +73,8 @@
         },
         "/apartments": {
             "get": {
-                "summary": "Mostra la lista di tutti gli appartamenti.",
-                "description": "",
+                "summary": "Ottieni tutti gli appartamenti corrispondenti ad un user_id",
+                "description": "Passa come parametri in GET lo user_id dell'utente di cui vuoi cercare gli appartamenti",
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -85,11 +85,11 @@
                     }
                 },
                 "tags": [
-                    "apartments"
+                    "api/apartments?user_id={user_id}"
                 ]
             },
             "post": {
-                "summary": "Store a newly created resource in storage.",
+                "summary": "Salva un nuovo appartamento all'interno del database.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -134,7 +134,7 @@
                 ]
             },
             "put": {
-                "summary": "Update the specified resource in storage.",
+                "summary": "Salva le modifiche apportate ad un appartamento.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -161,7 +161,34 @@
                 ]
             },
             "patch": {
-                "summary": "Update the specified resource in storage.",
+                "summary": "Salva le modifiche apportate ad un appartamento.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "apartment",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "apartments"
+                ]
+            },
+            "delete": {
+                "summary": "Rimuovi un singolo appartamento passandone l'ID.",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -339,7 +366,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -351,7 +378,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     }
                 },
                 "required": [
@@ -449,7 +476,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -461,7 +488,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     }
                 },
                 "required": [
@@ -540,7 +567,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -552,7 +579,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     }
                 },
                 "required": [
@@ -609,7 +636,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -621,7 +648,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     }
                 },
                 "required": [
@@ -687,7 +714,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23"
+                        "example": "2024-11-24"
                     },
                     "email": {
                         "name": "email",
@@ -710,7 +737,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "password": {
                         "name": "password",
@@ -744,7 +771,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -756,7 +783,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23 09:31:47"
+                        "example": "2024-11-24 13:54:39"
                     }
                 },
                 "required": [
@@ -811,7 +838,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-23"
+                        "example": "2024-11-24"
                     }
                 },
                 "required": [
