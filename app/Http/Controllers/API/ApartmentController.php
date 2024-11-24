@@ -18,7 +18,7 @@ class ApartmentController extends Controller
      * @Request({
      *     summary: Ottieni tutti gli appartamenti corrispondenti ad un user_id,
      *     description: Passa come parametri in GET lo user_id dell'utente di cui vuoi cercare gli appartamenti,
-     *     tags: apartments/{user_id}
+     *     tags: api/apartments?user_id={user_id}
      * }) 
     */
     public function index(Request $request)
