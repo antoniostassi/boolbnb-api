@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Validator;
 // controllers
 use App\Http\Controllers\Controller;
 
-use App\Models\{
-    Message,
-    Apartment
-};
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
