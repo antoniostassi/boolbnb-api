@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->string('user_email', 64);
+            $table->string('user_email');
             $table->string('firstname', 64)->nullable();
             $table->string('lastname', 64)->nullable();
             $table->foreignId('apartment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
