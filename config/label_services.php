@@ -3,82 +3,82 @@
 return [
     [
         "title" => "Colazione Inclusa",
-        "image" => "https://example.com/images/colazione.jpg"
+        "image" => "fa-solid fa-mug-saucer"
     ],
     [
         "title" => "Wi-Fi Gratuito",
-        "image" => "https://example.com/images/wifi.jpg"
+        "image" => "fa-solid fa-wifi"
     ],
     [
         "title" => "Servizio Navetta",
-        "image" => "https://example.com/images/navetta.jpg"
+        "image" => "fa-solid fa-van-shuttle"
     ],
     [
         "title" => "Piscina Esterna",
-        "image" => "https://example.com/images/piscina.jpg"
+        "image" => "fa-solid fa-water-ladder"
     ],
     [
         "title" => "Parcheggio Privato",
-        "image" => "https://example.com/images/parcheggio.jpg"
+        "image" => "fa-solid fa-square-parking"
     ],
     [
         "title" => "Noleggio Biciclette",
-        "image" => "https://example.com/images/biciclette.jpg"
+        "image" => "fa-solid fa-bicycle"
     ],
     [
         "title" => "Area Barbecue",
-        "image" => "https://example.com/images/barbecue.jpg"
+        "image" => "fa-solid fa-stroopwafel"
     ],
     [
         "title" => "Servizio di Pulizia",
-        "image" => "https://example.com/images/pulizia.jpg"
+        "image" => "fa-solid fa-broom"
     ],
     [
         "title" => "Animali Ammessi",
-        "image" => "https://example.com/images/animali.jpg"
+        "image" => "fa-solid fa-paw"
     ],
     [
         "title" => "Cucina Attrezzata",
-        "image" => "https://example.com/images/cucina.jpg"
+        "image" => "fa-solid fa-kitchen-set"
     ],
     [
         "title" => "Aria Condizionata",
-        "image" => "https://example.com/images/aria_condizionata.jpg"
+        "image" => "fa-solid fa-fan"
     ],
     [
         "title" => "Deposito Bagagli",
-        "image" => "https://example.com/images/deposito_bagagli.jpg"
+        "image" => "fa-solid fa-suitcase-rolling"
     ],
     [
         "title" => "TV a Schermo Piatto",
-        "image" => "https://example.com/images/tv.jpg"
+        "image" => "fa-solid fa-tv"
     ],
     [
         "title" => "Vista Panoramica",
-        "image" => "https://example.com/images/vista.jpg"
+        "image" => "fa-solid fa-mountain-city"
     ],
     [
         "title" => "Colazione Vegana",
-        "image" => "https://example.com/images/colazione_vegana.jpg"
+        "image" => "fa-solid fa-leaf"
     ],
     [
         "title" => "Camere Familiari",
-        "image" => "https://example.com/images/camere_familiari.jpg"
+        "image" => "fa-solid fa-people-roof"
     ],
     [
         "title" => "Spa & Benessere",
-        "image" => "https://example.com/images/spa.jpg"
+        "image" => "fa-solid fa-spa"
     ],
     [
         "title" => "Servizio Lavanderia",
-        "image" => "https://example.com/images/lavanderia.jpg"
+        "image" => "fa-solid fa-soap"
     ],
     [
         "title" => "Giardino Privato",
-        "image" => "https://example.com/images/giardino.jpg"
+        "image" => "fa-solid fa-seedling"
     ],
     [
         "title" => "Reception 24 Ore",
-        "image" => "https://example.com/images/reception.jpg"
+        "image" => "fa-solid fa-bell-concierge"
     ]
 ];
