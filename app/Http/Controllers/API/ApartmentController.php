@@ -59,12 +59,7 @@ class ApartmentController extends Controller
             //$data = DB::table('apartments')->withPivot('promotions')->get(); // Altrimenti ne mostra 8 come al solito
 
             $data = Apartment::with('promotions') // Carica la relazione promotions
-            
-                // Tutta sta roba sotto corrisponde a questa query in MySQL
-                // SELECT MAX(apartment_promotion.end_date) 
-                // FROM apartment_promotion 
-                // WHERE apartments.id = apartment_promotion.apartment_id;
-                // WHERE apartments_promotion.end_date >= DATADIOGGI
+    
 
                 ->addSelect(['latest_end_date' => function ($query) use ($today) { // crea una colonna virtuale per confrontare i dati. ( è come se facessi un ciclo for e inserissi uno ad uno le date di end_date dalla tabella pivot )
                     $query->selectRaw('MAX(apartment_promotion.end_date)') // seleziona il massimo valore di end_date all'interno di apartment_promotion
