@@ -119,6 +119,7 @@ class ApartmentController extends Controller
             $file = $request->file('image');
             $filePath = $file->store('images', 'public'); // Salva nella cartella storage/app/public/images
     
+            $request->image = json(['filePath' => 'http://localhost:8000/storage/' . $filePath], 200);
             // Restituzione della risposta con il percorso del file
             // return response()->json(['filePath' => '/storage/' . $filePath], 200);
         }
