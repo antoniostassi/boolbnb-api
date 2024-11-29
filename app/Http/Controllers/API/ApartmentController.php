@@ -115,6 +115,14 @@ class ApartmentController extends Controller
             ], 400);
         };
 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filePath = $file->store('images', 'public'); // Salva nella cartella storage/app/public/images
+    
+            // Restituzione della risposta con il percorso del file
+            // return response()->json(['filePath' => '/storage/' . $filePath], 200);
+        }
+
         $apartment = Apartment::create($request->all());
 
         $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
