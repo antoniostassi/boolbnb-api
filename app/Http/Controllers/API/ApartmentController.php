@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\RedirectResponse;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Apartment;
 use Illuminate\Http\Request;
@@ -96,7 +97,7 @@ class ApartmentController extends Controller
             'address' => 'required|string|min:10|max:128',
             'latitude' => 'required',
             'longitude' => 'required',
-            'image' => 'required|string|max:1024',
+            'image' => 'required|file|max:4096',
             'is_visible' => 'nullable|boolean',
             'services' => 'nullable|array|exists:services,id',
             'promotions' => 'nullable|exists:promotions,id',
@@ -115,10 +116,17 @@ class ApartmentController extends Controller
             ], 400);
         };
 
-        $apartment = Apartment::create($request->all());
+        if ($request->hasFile('image')) {
 
-        $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
-        $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
+            $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
+            $completedPath = 'http://localhost:8000/storage/'.$imagePath; // Path completa che andrò a salvare
+            $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
+        }
+
+        $apartment = Apartment::create($data);
+
+        $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
+        $apartment->promotions()->sync($data['promotions'] ?? []); // Many to Many pivot table sync
 
         return response()->json([
             'status' => 'ok'
