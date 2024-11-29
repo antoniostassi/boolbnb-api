@@ -97,7 +97,7 @@ class ApartmentController extends Controller
             'address' => 'required|string|min:10|max:128',
             'latitude' => 'required',
             'longitude' => 'required',
-            'image' => 'required|file|max:4024',
+            'image' => 'required|file|max:4096',
             'is_visible' => 'nullable|boolean',
             'services' => 'nullable|array|exists:services,id',
             'promotions' => 'nullable|exists:promotions,id',
