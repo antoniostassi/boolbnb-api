@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\PromotionController;
 use App\Http\Controllers\Api\MessageController;
+// Braintree
+use App\Http\Controllers\Api\PaymentController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -30,4 +32,9 @@ Route::resource('apartments', ApartmentController::class)->only([
 
 Route::resource('messages', MessageController::class)->only([
     'store',
+]);
+
+Route::resource('payment', PaymentController::class)->only([
+    'token',
+    'process'
 ]);
