@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Apartment;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -113,11 +114,16 @@ class ApartmentController extends Controller
             $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
         }
 
-        $apartment = Apartment::create($data);
 
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
-        
-        $apartment->promotions()->sync([$data['promotions']=>['start_date'=>$today, 'end_date'=>$today]]); // Many to Many pivot table sync
+
+        $promotion = Promotion::where('id', $data['promotions']);
+
+        $promotionDurationTime = $promotion->duration_time;
+
+        $apartment->promotions()->sync([$data['promotions']=>['start_date'=>$today, 'end_date'=>$today->modify('+'.$promotionDurationTime.' days')]]); // Many to Many pivot table sync
+
+        $apartment = Apartment::create($data);
 
         return response()->json([
             'status' => 'ok'
