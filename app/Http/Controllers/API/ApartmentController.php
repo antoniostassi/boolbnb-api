@@ -118,9 +118,9 @@ class ApartmentController extends Controller
 
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
 
-        $promotion = Promotion::where('id', $data['promotions']);
+        $promotion = Promotion::where('id', $data['promotions'])->get('duration_time');
 
-        $promotionDurationTime = $promotion->duration_time;
+        $promotionDurationTime = $promotion;
 
         $apartment->promotions()->sync([$data['promotions']=>['start_date'=>$today, 'end_date'=>$today->modify('+'.$promotionDurationTime.' days')]]); // Many to Many pivot table sync
 
