@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Visualization extends Model
 {
     //
+    public $timestamps = false; // not to use timestamps
 
-    protected $fillable = [
-        'apartment_id',
-        'ip_address',
-        'visit_date'
-    ];
+    protected $fillable = ['apartment_id', 'ip_address', 'visit_date'];
+
+    protected $hidden = ['ip_address', 'id'];
 
     public function apartment() : belongsTo
     {
