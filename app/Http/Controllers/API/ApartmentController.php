@@ -23,7 +23,7 @@ class ApartmentController extends Controller
      *     summary: Ottieni tutti gli appartamenti corrispondenti ad un user_id,
      *     description: Passa come parametri in GET lo user_id dell'utente di cui vuoi cercare gli appartamenti,
      *     tags: api/apartments?user_id={user_id}
-     * }) 
+     * })
     */
     public function index(Request $request)
     {
@@ -43,13 +43,13 @@ class ApartmentController extends Controller
             ->orderBy('id', 'asc') // Ordina secondariamente per ID univoco
             ->get();
         }
-        elseif ($request->has('user_id')) 
+        elseif ($request->has('user_id'))
         {
             $data = Apartment::where('user_id', $request->user_id)
             ->where('is_visible', true)
             ->get(); // Estrai gli appartamenti dell'utente
-        } 
-        else 
+        }
+        else
         {
             $data = Apartment::with('promotions') // Carica la relazione promotions
             ->where('is_visible', true)
@@ -68,7 +68,7 @@ class ApartmentController extends Controller
         return $data;
     }
 
-    
+
 
     /**
      * Salva un nuovo appartamento all'interno del database.
@@ -76,7 +76,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         //
-
+        $today = Carbon::now(); // Ottieni la data corrente
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
             'title' => 'required|string|max:128|min:5',
@@ -116,7 +116,8 @@ class ApartmentController extends Controller
         $apartment = Apartment::create($data);
 
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
-        $apartment->promotions()->sync($data['promotions'] ?? []); // Many to Many pivot table sync
+        
+        $apartment->promotions()->sync([$data['promotions']=>['start_date'=>$today, 'end_date'=>$today]]); // Many to Many pivot table sync
 
         return response()->json([
             'status' => 'ok'
