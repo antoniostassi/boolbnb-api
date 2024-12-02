@@ -23,7 +23,10 @@ Route::resource('promotions', PromotionController::class)->only([
 
 Route::resource('apartments', ApartmentController::class)->only([
     'index',
-    'show',
+    'show'
+]);
+
+Route::resource('apartments', ApartmentController::class)->middleware('auth')->only([
     'store',
     'update',
     'destroy'
