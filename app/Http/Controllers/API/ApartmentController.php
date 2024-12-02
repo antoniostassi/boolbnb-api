@@ -31,24 +31,17 @@ class ApartmentController extends Controller
 
         if ($request->has('all') && $request->all == true)
         {
-            $data = Apartment::with('promotions')->where('is_visible', true)
-            // Carica la relazione promotions
-            
-                // Tutta sta roba sotto corrisponde a questa query in MySQL
-                // SELECT MAX(apartment_promotion.end_date) 
-                // FROM apartment_promotion 
-                // WHERE apartments.id = apartment_promotion.apartment_id;
-                // WHERE apartments_promotion.end_date >= DATADIOGGI
-
-                ->addSelect(['latest_end_date' => function ($query) use ($today) { // crea una colonna virtuale per confrontare i dati. ( è come se facessi un ciclo for e inserissi uno ad uno le date di end_date dalla tabella pivot )
-                    $query->selectRaw('MAX(apartment_promotion.end_date)') // seleziona il massimo valore di end_date all'interno di apartment_promotion
-                        ->from('apartment_promotion') // proprio dalla tabella apartment_promotion
-                        ->whereColumn('apartments.id', 'apartment_promotion.apartment_id') // lì dove la colonna "apartment_promotion.apartment_id" è uguale all'id dell'appartamento
-                        ->where('apartment_promotion.end_date', '>=', $today); // assicurandoti che non siano scaduti
-                }]) // E inserisci il risultato dentro "latest_end_date"
-                // Adesso ordina il tutto in base a quella colonna virtuale
-                ->orderBy('latest_end_date', 'desc') // ordina
-                ->get();
+            $data = Apartment::with('promotions') // Carica la relazione promotions
+            ->where('is_visible', true)
+            ->addSelect(['latest_end_date' => function ($query) use ($today) {
+                $query->selectRaw('MAX(apartment_promotion.end_date)')
+                    ->from('apartment_promotion')
+                    ->whereColumn('apartments.id', 'apartment_promotion.apartment_id')
+                    ->where('apartment_promotion.end_date', '>=', $today);
+            }])
+            ->orderBy('latest_end_date', 'desc') // Ordina per la colonna virtuale
+            ->orderBy('id', 'asc') // Ordina secondariamente per ID univoco
+            ->get();
         }
         elseif ($request->has('user_id')) 
         {
@@ -58,23 +51,17 @@ class ApartmentController extends Controller
         } 
         else 
         {
-            //$data = Apartment::paginate(8);
-            //$data = DB::table('apartments')->withPivot('promotions')->get(); // Altrimenti ne mostra 8 come al solito
-
             $data = Apartment::with('promotions') // Carica la relazione promotions
-            ->where('is_visible', true) 
-    
-
-                ->addSelect(['latest_end_date' => function ($query) use ($today) { // crea una colonna virtuale per confrontare i dati. ( è come se facessi un ciclo for e inserissi uno ad uno le date di end_date dalla tabella pivot )
-                    $query->selectRaw('MAX(apartment_promotion.end_date)') // seleziona il massimo valore di end_date all'interno di apartment_promotion
-                        ->from('apartment_promotion') // proprio dalla tabella apartment_promotion
-                        ->whereColumn('apartments.id', 'apartment_promotion.apartment_id') // lì dove la colonna "apartment_promotion.apartment_id" è uguale all'id dell'appartamento
-                        ->where('apartment_promotion.end_date', '>=', $today); // assicurandoti che non siano scaduti
-                }]) // E inserisci il risultato dentro "latest_end_date"
-
-                // Adesso ordina il tutto in base a quella colonna virtuale
-                ->orderBy('latest_end_date', 'desc') // ordina
-                ->paginate(8);
+            ->where('is_visible', true)
+            ->addSelect(['latest_end_date' => function ($query) use ($today) {
+                $query->selectRaw('MAX(apartment_promotion.end_date)')
+                    ->from('apartment_promotion')
+                    ->whereColumn('apartments.id', 'apartment_promotion.apartment_id')
+                    ->where('apartment_promotion.end_date', '>=', $today);
+            }])
+            ->orderBy('latest_end_date', 'desc') // Ordina per la colonna virtuale
+            ->orderBy('id', 'asc') // Ordina secondariamente per ID univoco
+            ->paginate(8);
         }
 
         //$data = Apartment::paginate(8); // paginate = 8 items for single page.
