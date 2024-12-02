@@ -77,7 +77,6 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         //
-        $today = Carbon::now(); // Ottieni la data corrente
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
             'title' => 'required|string|max:128|min:5',
@@ -118,15 +117,17 @@ class ApartmentController extends Controller
 
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
 
-        $promotion = Promotion::where('id', $data['promotions'])->get('duration_time');
+        $promotionDurationTime = Promotion::where('id', $data['promotions'])->first(); // Quanto dura la promozione
 
-        $promotionDurationTime = $promotion;
+        $now = new \DateTime(date('Y-m-d')); // lo slash prima del dateTime usa il namespace globale
+        $endDate = $now->modify('+'.$promotionDurationTime->duration_time.' days');// Aggiungi i giorni
 
-        $apartment->promotions()->sync([$data['promotions']=>['start_date'=>$today, 'end_date'=>$today->modify('+'.$promotionDurationTime.' days')]]); // Many to Many pivot table sync
+        $apartment->promotions()->sync([$data['promotions']=>['start_date'=>date('Y-m-d'), 'end_date'=>$endDate]]); // Many to Many pivot table sync
 
 
         return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
+            'end_date' => $endDate
         ], 200);
     }
 
