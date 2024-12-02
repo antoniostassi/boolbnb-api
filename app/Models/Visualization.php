@@ -11,7 +11,7 @@ class Visualization extends Model
 
     protected $fillable = ['apartment_id', 'ip_address', 'visit_date'];
 
-    protected $hidden = ['ip_address', 'id'];
+    protected $hidden = ['id', 'apartment_id', 'ip_address'];
 
     public function apartment() : belongsTo
     {
