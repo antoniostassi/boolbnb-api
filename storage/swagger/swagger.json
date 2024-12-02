@@ -214,6 +214,58 @@
                     "apartments"
                 ]
             }
+        },
+        "/messages": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "messages"
+                ]
+            }
+        },
+        "/visualizations": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "visualizations"
+                ]
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "visualizations"
+                ]
+            }
         }
     },
     "tags": [],
@@ -366,7 +418,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -378,7 +430,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
@@ -425,7 +477,7 @@
                     "user_email": {
                         "name": "user_email",
                         "type_name": "varchar",
-                        "type": "varchar(64)",
+                        "type": "varchar(255)",
                         "collation": "utf8mb4_unicode_ci",
                         "nullable": false,
                         "default": null,
@@ -476,7 +528,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -488,7 +540,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
@@ -567,7 +619,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -579,7 +631,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
@@ -636,7 +688,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -648,7 +700,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
@@ -714,7 +766,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24"
+                        "example": "2024-12-02"
                     },
                     "email": {
                         "name": "email",
@@ -737,7 +789,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "password": {
                         "name": "password",
@@ -771,7 +823,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -783,7 +835,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24 13:54:39"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
@@ -830,15 +882,15 @@
                     },
                     "visit_date": {
                         "name": "visit_date",
-                        "type_name": "date",
-                        "type": "date",
+                        "type_name": "datetime",
+                        "type": "datetime",
                         "collation": null,
                         "nullable": false,
                         "default": null,
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-11-24"
+                        "example": "2024-12-02 11:10:55"
                     }
                 },
                 "required": [
