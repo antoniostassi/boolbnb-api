@@ -117,7 +117,7 @@ class ApartmentController extends Controller
 
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
 
-        if ($request->hasFile('promotions')) {
+        if ($request['promotions']) {
             $promotionDurationTime = Promotion::where('id', $data['promotions'])->first(); // Quanto dura la promozione
             $now = new \DateTime(date('Y-m-d')); // lo slash prima del dateTime usa il namespace globale
             $endDate = $now->modify('+'.$promotionDurationTime->duration_time.' days');// Aggiungi i giorni
