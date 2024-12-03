@@ -125,8 +125,7 @@ class ApartmentController extends Controller
         };
 
         return response()->json([
-            'status' => 'ok',
-            'end_date' => $endDate
+            'status' => 'ok'
         ], 200);
     }
 
