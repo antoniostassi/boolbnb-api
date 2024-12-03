@@ -50,6 +50,6 @@ class Apartment extends Model
 
     public function promotions()
     {
-        return $this->belongsToMany(Promotion::class); //relation many to many with promotions
+        return $this->belongsToMany(Promotion::class)->withPivot('start_date', 'end_date');; //relation many to many with promotions
     }
 }
