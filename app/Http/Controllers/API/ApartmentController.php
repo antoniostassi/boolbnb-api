@@ -171,8 +171,8 @@ class ApartmentController extends Controller
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
             ]);
         };
-        
-        print_r($request->all()['image']);
+
+        return response()->json($request->all());
 
         if ($request->hasFile('image')) {
             $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
