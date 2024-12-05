@@ -171,9 +171,10 @@ class ApartmentController extends Controller
                 'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
             ]);
         };
+        
+        print_r($request->all()['image']);
 
         if ($request->hasFile('image')) {
-            print_r('passo da qui');
             $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
             $completedPath = 'http://localhost:8000/storage/'.$imagePath; // Path completa che andrò a salvare
             $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
