@@ -161,6 +161,8 @@ class ApartmentController extends Controller
             'services' => 'nullable|array|exists:services,id',
             'promotions' => 'nullable|exists:promotions,id',
         ]);
+        
+        return response()->json($request->all());
 
         if ($validator->fails()) {
 
@@ -172,7 +174,6 @@ class ApartmentController extends Controller
             ]);
         };
 
-        return response()->json($request->all());
 
         if ($request->hasFile('image')) {
             $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
