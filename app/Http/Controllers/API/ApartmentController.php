@@ -156,7 +156,7 @@ class ApartmentController extends Controller
             'address' => 'required|string|min:10|max:128',
             'latitude' => 'required',
             'longitude' => 'required',
-            'image' => 'required|string|max:1024',
+            'image' => 'required|file|max:4096',
             'is_visible' => 'nullable|boolean',
             'services' => 'nullable|array|exists:services,id',
             'promotions' => 'nullable|exists:promotions,id',
@@ -172,7 +172,15 @@ class ApartmentController extends Controller
             ]);
         };
 
-        $apartment->update($validator->validated());
+        if ($request->hasFile('image')) {
+            
+            $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
+            $completedPath = 'http://localhost:8000/storage/'.$imagePath; // Path completa che andrò a salvare
+            $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
+            $apartment->update($data);
+        } else {
+            $apartment->update($validator->validated());
+        }
 
         $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
         $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
