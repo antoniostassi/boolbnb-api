@@ -107,7 +107,7 @@ class ApartmentController extends Controller
         };
 
         if ($request->hasFile('image')) {
-
+            
             $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
             $completedPath = 'http://localhost:8000/storage/'.$imagePath; // Path completa che andrò a salvare
             $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
@@ -196,5 +196,38 @@ class ApartmentController extends Controller
             'message' => 'Appartamento eliminato con successo.',
         ]);
 
+    }
+
+    /**
+     * Aggiungi la promozione all'appartamento.
+     * 
+     * 
+    */
+    public function addPromotion(Request $request, Apartment $apartment)
+    {
+        $validator = Validator::make($request->all(), [
+            'promotions' => 'nullable|exists:promotions,id',
+        ]);
+
+        if ($validator->fails()) {
+
+            $errors = $validator->errors();
+
+            return response()->json([
+                'errors' => $errors,
+                'message' => 'Si è verificato un errore inaspettato. Riprova più tardi.',
+            ]);
+        };
+
+        if ($request['promotions']) {
+            $promotionDurationTime = Promotion::where('id', $request['promotions'])->first(); // Quanto dura la promozione
+            $now = new \DateTime(date('Y-m-d')); // lo slash prima del dateTime usa il namespace globale
+            $endDate = $now->modify('+'.$promotionDurationTime->duration_time.' days');// Aggiungi i giorni
+            $apartment->promotions()->sync([$request['promotions']=>['start_date'=>date('Y-m-d'), 'end_date'=>$endDate]]); // Many to Many pivot table sync
+        };
+
+        return response()->json([
+            'status' => 'ok'
+        ], 200);
     }
 }

@@ -40,3 +40,5 @@ Route::resource('visualizations', VisualizationController::class)->only([
     'index',
     'store'
 ]);
+
+Route::post('apartment/promotion/{apartment}', [ApartmentController::class, 'addPromotion'])->middleware('auth');
