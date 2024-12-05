@@ -161,8 +161,6 @@ class ApartmentController extends Controller
             'services' => 'nullable|array|exists:services,id',
             'promotions' => 'nullable|exists:promotions,id',
         ]);
-        
-        return response()->json($request->all());
 
         if ($validator->fails()) {
 
