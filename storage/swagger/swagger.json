@@ -418,7 +418,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -430,7 +430,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [
@@ -528,7 +528,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -540,7 +540,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [
@@ -619,7 +619,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -631,7 +631,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [
@@ -688,7 +688,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -700,7 +700,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [
@@ -766,7 +766,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02"
+                        "example": "2024-12-05"
                     },
                     "email": {
                         "name": "email",
@@ -789,7 +789,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "password": {
                         "name": "password",
@@ -823,7 +823,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     },
                     "updated_at": {
                         "name": "updated_at",
@@ -835,7 +835,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [
@@ -890,7 +890,7 @@
                         "auto_increment": false,
                         "comment": null,
                         "generation": null,
-                        "example": "2024-12-02 11:10:55"
+                        "example": "2024-12-05 14:03:56"
                     }
                 },
                 "required": [

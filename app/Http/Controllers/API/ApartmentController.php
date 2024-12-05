@@ -198,6 +198,11 @@ class ApartmentController extends Controller
 
     }
 
+    /**
+     * Aggiungi la promozione all'appartamento.
+     * 
+     * 
+    */
     public function addPromotion(Request $request, Apartment $apartment)
     {
         $validator = Validator::make($request->all(), [
