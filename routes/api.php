@@ -28,7 +28,6 @@ Route::resource('apartments', ApartmentController::class)->only([
 
 Route::resource('apartments', ApartmentController::class)->middleware('auth')->only([
     'store',
-    'update',
     'destroy'
 ]);
 
@@ -42,3 +41,4 @@ Route::resource('visualizations', VisualizationController::class)->only([
 ]);
 
 Route::post('apartment/promotion/{apartment}', [ApartmentController::class, 'addPromotion'])->middleware('auth');
+Route::match(['patch', 'put'],'apartments/{apartment}', [ApartmentController::class, 'update'])->middleware('auth');

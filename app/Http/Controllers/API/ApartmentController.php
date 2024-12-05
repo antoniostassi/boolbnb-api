@@ -118,7 +118,6 @@ class ApartmentController extends Controller
         $apartment->services()->sync($data['services'] ?? []); // Many to Many pivot table sync
 
         if ($request['promotions']) {
-            print_r('Passo da dentro l\'if');
             $promotionDurationTime = Promotion::where('id', $data['promotions'])->first(); // Quanto dura la promozione
             $now = new \DateTime(date('Y-m-d')); // lo slash prima del dateTime usa il namespace globale
             $endDate = $now->modify('+'.$promotionDurationTime->duration_time.' days');// Aggiungi i giorni
@@ -126,7 +125,7 @@ class ApartmentController extends Controller
         };
 
         return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
         ], 200);
     }
 
@@ -145,7 +144,7 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        //
+        
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
             'title' => 'required|string|max:128|min:5',
@@ -159,8 +158,8 @@ class ApartmentController extends Controller
             'image' => 'nullable|file|max:4096',
             'is_visible' => 'nullable|boolean',
             'services' => 'nullable|array|exists:services,id',
-            'promotions' => 'nullable|exists:promotions,id',
         ]);
+
 
         if ($validator->fails()) {
 
@@ -172,23 +171,24 @@ class ApartmentController extends Controller
             ]);
         };
 
+        $data = $request->all();
+        $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
 
         if ($request->hasFile('image')) {
+
             $imagePath = Storage::disk('public')->put('uploads', $request->all()['image']);
             $completedPath = 'http://localhost:8000/storage/'.$imagePath; // Path completa che andrò a salvare
             $data = array_merge($request->all(), ['image' => $completedPath]); // Ho dovuto creare $data perché $request è IMMUTABILE, dunque non possono essere cambiati i valori al suo interno
             $apartment->update($data);
 
         } else {
+
             $apartment->update($validator->validated());
         }
 
-        $apartment->services()->sync($request['services'] ?? []); // Many to Many pivot table sync
-        $apartment->promotions()->sync($request['promotions'] ?? []); // Many to Many pivot table sync
-
 
         return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
         ], 200);
     }
 
